@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
-import * as type from '../../constants';
 import { ITodo } from '../../model/todo';
 import { addTodo, toggleTodo, removeTodo } from '../../actions/TodoActions';
 
