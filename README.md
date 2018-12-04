@@ -12,8 +12,8 @@ For help getting started with Angular, view online
 #### 2. Clone the repo
 
 ```sh
-$ https://github.com/asifvora/angular-github.git
-$ cd angular-github/
+$ https://github.com/asifvora/angular-redux-tutorial-app.git
+$ cd angular-redux-tutorial-app/
 ```
 
 #### 3. Install dependency
