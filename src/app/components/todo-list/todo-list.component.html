@@ -23,7 +23,7 @@
 </form>
 <br />
 <h6>Todos List:</h6>
-<div *ngIf="todos.length!=0">
+<div *ngIf="todosData.length!=0 ;else other_content">
   <table class="table">
     <thead class="thead-inverse">
       <tr>
@@ -35,7 +35,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let t of todos">
+      <tr *ngFor="let t of todosData">
         <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.id }}</span></td>
         <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.description }}</span></td>
         <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.responsible }}</span></td>
@@ -49,3 +49,6 @@
     </tbody>
   </table>
 </div>
+<ng-template #other_content>
+  <p>No todos available.</p>
+</ng-template>

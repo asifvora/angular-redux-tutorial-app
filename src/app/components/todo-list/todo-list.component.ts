@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgRedux } from '@angular-redux/store';
+import { NgRedux, select } from '@angular-redux/store';
 import { ITodo } from '../../model/todo';
 import { addTodo, toggleTodo, removeTodo } from '../../actions/TodoActions';
 
@@ -9,7 +9,8 @@ import { addTodo, toggleTodo, removeTodo } from '../../actions/TodoActions';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  todos = [];
+  @select() todos;
+  todosData = [];
   model: ITodo = {
     id: 0,
     description: "",
@@ -21,9 +22,8 @@ export class TodoListComponent implements OnInit {
   constructor(private ngRedux: NgRedux<undefined>) { }
 
   ngOnInit() {
-    this.ngRedux.subscribe(() => {
-      let state = this.ngRedux.getState();
-      this.todos = state.todos.todos;
+    this.todos.subscribe(todos => {
+      this.todosData = todos.todos;
     });
   }
 
