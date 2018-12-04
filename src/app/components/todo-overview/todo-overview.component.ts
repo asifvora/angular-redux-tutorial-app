@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgRedux, select } from '@angular-redux/store';
+import { NgRedux } from '@angular-redux/store';
 import { clearTodos } from '../../actions/TodoActions';
 
 @Component({
@@ -8,15 +8,16 @@ import { clearTodos } from '../../actions/TodoActions';
   styleUrls: ['./todo-overview.component.css']
 })
 export class TodoOverviewComponent implements OnInit {
-  @select() todos;
-  @select() lastUpdate;
+  todos = [];
+  lastUpdate = null;
 
   constructor(private ngRedux: NgRedux<undefined>) { }
 
   ngOnInit() {
-    let todos = this.ngRedux.getState();
-    console.log('asif vora', todos);
-    console.log('todos', this.ngRedux);
+    this.ngRedux.subscribe(() => {
+      let state = this.ngRedux.getState();
+      this.todos = state.todos.todos;
+    });
   }
 
   clearTodos() {

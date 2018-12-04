@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgRedux, select } from '@angular-redux/store';
+import { NgRedux } from '@angular-redux/store';
 import * as type from '../../constants';
 import { ITodo } from '../../model/todo';
+import { addTodo, toggleTodo, removeTodo } from '../../actions/TodoActions';
 
 @Component({
   selector: 'app-todo-list',
@@ -9,7 +10,7 @@ import { ITodo } from '../../model/todo';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  @select() todos;
+  todos = [];
   model: ITodo = {
     id: 0,
     description: "",
@@ -21,17 +22,21 @@ export class TodoListComponent implements OnInit {
   constructor(private ngRedux: NgRedux<undefined>) { }
 
   ngOnInit() {
+    this.ngRedux.subscribe(() => {
+      let state = this.ngRedux.getState();
+      this.todos = state.todos.todos;
+    });
   }
 
   onSubmit() {
-    this.ngRedux.dispatch({ type: type.ADD_TODO, todo: this.model });
+    this.ngRedux.dispatch(addTodo(this.model));
   }
 
   toggleTodo(todo) {
-    this.ngRedux.dispatch({ type: type.TOGGLE_TODO, id: todo.id });
+    this.ngRedux.dispatch(toggleTodo(todo.id));
   }
 
   removeTodo(todo) {
-    this.ngRedux.dispatch({ type: type.REMOVE_TODO, id: todo.id });
+    this.ngRedux.dispatch(removeTodo(todo.id));
   }
 }

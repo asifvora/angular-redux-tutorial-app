@@ -23,7 +23,7 @@
 </form>
 <br />
 <h6>Todos List:</h6>
-<div *ngIf="(todos | async)?.length!=0">
+<div *ngIf="todos.length!=0">
   <table class="table">
     <thead class="thead-inverse">
       <tr>
@@ -35,7 +35,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let t of todos | async">
+      <tr *ngFor="let t of todos">
         <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.id }}</span></td>
         <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.description }}</span></td>
         <td><span (click)="toggleTodo(t)" [class.completed]="t.isCompleted">{{ t.responsible }}</span></td>
