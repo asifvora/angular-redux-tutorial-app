@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 import { store } from './store/store';
 import { AppRoutingModule } from './routes/app-routing.module';
@@ -14,14 +15,15 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
   declarations: [
     AppComponent,
     TodoOverviewComponent,
-    TodoListComponent
+    TodoListComponent,
+    TimeAgoPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     NgbModule,
-    NgReduxModule
+    NgReduxModule,    
   ],
   providers: [],
   bootstrap: [AppComponent]

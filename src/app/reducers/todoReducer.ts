@@ -12,8 +12,6 @@ export const initialState: TodoState = {
 }
 
 const todoReducer = (state = initialState, action): TodoState => {
-    // console.log('state', state)
-    // console.log('action', action)
     switch (action.type) {
         case type.ADD_TODO:
             action.todo.id = state.todos.length + 1;

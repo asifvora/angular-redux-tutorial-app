@@ -1,7 +1,8 @@
 <p class="text-right">
   <span class="badge badge-secondary">Last Update:
-    {{ lastUpdate }} | Total items: {{ (todosData).length }}
-    <!-- {{ (lastUpdate | async) | date:'mediumTime' }} | Total items: {{ (todos | async).length }} -->
+    {{ lastUpdate && (lastUpdate | timeAgo)}} | Total items: {{ (todosData).length }}
   </span>
 </p>
 <button class="btn btn-primary" (click)="clearTodos()">Delete All</button>
+<br />
+<br />
