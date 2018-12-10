@@ -1,6 +1,7 @@
 # Angular Redux Tutorial App
 Angular Redux Tutorial App using angular7.
 
+![image](screenshot.png)
 
 ## Getting Started
 
